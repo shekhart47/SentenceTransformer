@@ -1,3 +1,14 @@
+# Usage Examples
+
+# Using Sentence Transformers (default)
+# python inference_script.py --model_path "/path/to/your/finetuned-e5-large" --input "This is a sample text to embed"
+
+# Using transformers directly
+# python inference_script.py --model_path "/path/to/your/finetuned-e5-large" --implementation transformers --input "This is a sample text to embed"
+
+# 
+
+
 import argparse
 import torch
 from typing import List, Union, Dict

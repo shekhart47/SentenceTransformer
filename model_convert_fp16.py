@@ -1,3 +1,14 @@
+#Usage Examples
+
+# Basic usage with standard transformers
+# python convert_to_fp16.py --model_path "/path/to/your/finetuned-e5-large"
+
+# Using SentenceTransformers implementation and custom output path
+# python convert_to_fp16.py --model_path "/path/to/your/finetuned-e5-large" --output_path "/path/to/save/fp16-model" --use_sentence_transformer
+
+# Convert and verify the model
+# python convert_to_fp16.py --model_path "/path/to/your/finetuned-e5-large" --verify
+
 import argparse
 import os
 import torch
