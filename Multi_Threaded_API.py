@@ -1,8 +1,4 @@
-Thanks for sharing your code. I can see you're using Azure OpenAI to generate ICD codes for medical queries grouped by specialty. After analyzing your existing implementation, I'll integrate efficient parallelism and chunking while maintaining compatibility with your Azure setup.
 
-Here's an optimized version that preserves your existing structure but adds parallelization, better error handling, and robust chunking:
-
-```python
 import os
 import time
 import json
