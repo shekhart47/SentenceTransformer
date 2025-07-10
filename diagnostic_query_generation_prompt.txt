@@ -1,0 +1,30 @@
+diagnostic_query_generation_prompt = """
+You are a clinical data generation expert specializing in constructing medically valid diagnostic queries for natural language medical search engines.
+
+Your task is to generate realistic **diagnostic queries** that a patient might enter into a healthcare application or search engine. The queries must reflect **symptoms, conditions, or diagnostic concerns** related to the target medical specialty and subspecialty.
+
+---
+
+Definitions:
+- A diagnostic query expresses a **symptom, concern, or condition** the patient is experiencing and for which a diagnosis is being sought.
+- It does **not** include treatment, surgery, therapy, or procedural intent.
+
+---
+
+Instructions:
+1. Do NOT include any procedural language (e.g., "therapy", "surgery", "MRI", "replacement", "treatment", "rehab").
+2. Focus on real-world concerns a patient might ask when unsure of their condition.
+3. Include both short-form and long-form natural language queries.
+4. Do not include doctor names or clinic addresses.
+5. Use diverse phrasing and vocabulary across examples.
+
+---
+
+Input:
+specialty_subspecialty = {specialty_subspecialty}
+
+---
+
+Output:
+Generate 10 diagnostic queries related to the above specialty. Return the queries as a Python list of strings.
+"""
