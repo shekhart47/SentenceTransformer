@@ -42,6 +42,12 @@ from sentence_transformers import SentenceTransformer, LoggingHandler, losses, u
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
 torch.backends.cudnn.benchmark = True  # Enable cuDNN autotuner
+torch.backends.cudnn.deterministic = False  # Allow non-deterministic ops for speed
+
+# Disable debugging features for production
+torch.autograd.set_detect_anomaly(False)
+torch.autograd.profiler.profile(False)
+torch.autograd.profiler.emit_nvtx(False)
 
 # Global variables for monitoring
 DATASET_SIZE = 0
@@ -179,10 +185,11 @@ def load_training_parameters():
         
         # Advanced optimizations
         GRADIENT_CHECKPOINTING = False,  # H100 has enough memory
-        COMPILE_MODEL = True,  # Enable torch.compile for speed (10-20% boost)
+        COMPILE_MODEL = False,  # Disabled due to SentenceTransformers compatibility
         USE_ONECYCLE_LR = False,  # Use cosine with restarts for 2 epochs
         USE_MIXED_PRECISION_OPTIMIZER = True,  # Use mixed precision optimizer
         USE_LION_OPTIMIZER = False,  # Option for Lion optimizer (better for long training)
+        USE_FLASH_ATTENTION = False,  # Flash attention (if supported by model)
     )
     
     return config
@@ -296,13 +303,14 @@ def load_model_loss_optimized(config):
         model = model.cuda()
     
     # Compile model with torch.compile for PyTorch 2.0+
+    # DISABLED due to CUDAGraph compatibility issues with SentenceTransformers
     if config.COMPILE_MODEL and hasattr(torch, 'compile'):
-        print("Compiling model with torch.compile() for better performance...")
-        try:
-            model = torch.compile(model, mode="reduce-overhead")
-            print("Model compilation successful")
-        except Exception as e:
-            print(f"Model compilation failed: {e}. Continuing without compilation.")
+        print("Note: torch.compile() disabled due to CUDAGraph compatibility issues with SentenceTransformers")
+        print("Training will proceed without model compilation for stability")
+        # Alternative optimization: Set model to use better CUDA kernels
+        if hasattr(torch.backends.cudnn, 'benchmark'):
+            torch.backends.cudnn.benchmark = True
+            print("Enabled cuDNN benchmarking for kernel optimization")
     
     print(f"{config.MODEL_NAME} Model Initialized")
     print("Initializing Loss: MultipleNegativesRankingLoss")
