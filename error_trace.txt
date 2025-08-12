@@ -1,28 +1,28 @@
 (azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ torchrun --nproc_per_node=2 optimized_training_script.py
-W0812 21:15:40.638000 10183 site-packages/torch/distributed/run.py:766] 
-W0812 21:15:40.638000 10183 site-packages/torch/distributed/run.py:766] *****************************************
-W0812 21:15:40.638000 10183 site-packages/torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
-W0812 21:15:40.638000 10183 site-packages/torch/distributed/run.py:766] *****************************************
-[W812 21:15:40.402322542 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W812 21:15:40.406666087 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
- Initializing Production Training Pipeline for H100 GPUs Initializing Production Training Pipeline for H100 GPUs
-
- Date: 2025-08-12 21:15:45 Date: 2025-08-12 21:15:45
-
- PyTorch Version: 2.7.1+cu126 PyTorch Version: 2.7.1+cu126
-
- Transformers Version: 4.53.1 Transformers Version: 4.53.1
-
- CUDA Available: True
- CUDA Version: 12.6
- CUDA Available: True
- CUDA Version: 12.6
- cuDNN Version: 90501 cuDNN Version: 90501
-
+W0812 21:28:14.554000 14189 site-packages/torch/distributed/run.py:766] 
+W0812 21:28:14.554000 14189 site-packages/torch/distributed/run.py:766] *****************************************
+W0812 21:28:14.554000 14189 site-packages/torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0812 21:28:14.554000 14189 site-packages/torch/distributed/run.py:766] *****************************************
+[W812 21:28:14.316369726 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W812 21:28:14.320327246 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+🚀 Initializing Production Training Pipeline for H100 GPUs
+📅 Date: 2025-08-12 21:28:18
+🔧 PyTorch Version: 2.7.1+cu126
+🔧 Transformers Version: 4.53.1
+🚀 Initializing Production Training Pipeline for H100 GPUs
+📅 Date: 2025-08-12 21:28:18
+🔧 PyTorch Version: 2.7.1+cu126
+🔧 Transformers Version: 4.53.1
+🔧 CUDA Available: True
+🔧 CUDA Version: 12.6
+🔧 CUDA Available: True
+🔧 CUDA Version: 12.6
+🔧 cuDNN Version: 90501
 
 ================================================================================
-================================================================================
+🔧 cuDNN Version: 90501
 
+================================================================================
 GPU available: NVIDIA H100 NVL
 Number of GPUs: 2
 ================================================================================
@@ -30,16 +30,16 @@ PRODUCTION TRAINING ON H100 GPUs
 Target: High quality model in 3-4 days
 ================================================================================
 
- Loading Full Dataset
-GPU available: NVIDIA H100 NVLLoading datasets (this may take a few minutes for 50M samples)...
-
+📊 Loading Full Dataset (50M+ samples)...
+Loading datasets (this may take a few minutes for 50M samples)...
+GPU available: NVIDIA H100 NVL
 Number of GPUs: 2
 ================================================================================
 PRODUCTION TRAINING ON H100 GPUs
 Target: High quality model in 3-4 days
 ================================================================================
 
- Loading Full Dataset
+📊 Loading Full Dataset (50M+ samples)...
 Loading datasets (this may take a few minutes for 50M samples)...
 Raw data loaded. Processing...
 Raw data loaded. Processing...
@@ -58,16 +58,16 @@ Converting to HuggingFace datasets...
 Datasets ready for training
 Datasets ready for training
 
- Configuring Optimized DataLoader...
+⚙️ Configuring Optimized DataLoader...
 Recommended dataloader_num_workers: 12
 
- Configuring Optimized DataLoader...
+⚙️ Configuring Optimized DataLoader...
 Recommended dataloader_num_workers: 12
-AVAILABLE_MEMORY_GB: 604.50 | DATASET_MEMORY_SIZE_GB: 7.91 | pin_memory: True
+AVAILABLE_MEMORY_GB: 604.44 | DATASET_MEMORY_SIZE_GB: 7.91 | pin_memory: True
 
- World Size (GPUs): 2
+🌍 World Size (GPUs): 2
 
- Training Configuration:
+📈 Training Configuration:
   - Dataset Size: 50,516,962 samples
   - Batch Size per GPU: 256
   - Effective Batch Size: 1,536
@@ -77,13 +77,13 @@ AVAILABLE_MEMORY_GB: 604.50 | DATASET_MEMORY_SIZE_GB: 7.91 | pin_memory: True
   - Estimated Time per Epoch: 4:34:04
   - Total Estimated Time: 9:08:08
 
- Loading Model and Loss Function 
+🤖 Loading Model and Loss Function...
 Loading Model e5-large-v2
-AVAILABLE_MEMORY_GB: 603.44 | DATASET_MEMORY_SIZE_GB: 7.91 | pin_memory: True
+AVAILABLE_MEMORY_GB: 604.05 | DATASET_MEMORY_SIZE_GB: 7.91 | pin_memory: True
 
- World Size (GPUs): 2
+🌍 World Size (GPUs): 2
 
- Training Configuration:
+📈 Training Configuration:
   - Dataset Size: 50,516,962 samples
   - Batch Size per GPU: 256
   - Effective Batch Size: 1,536
@@ -93,167 +93,166 @@ AVAILABLE_MEMORY_GB: 603.44 | DATASET_MEMORY_SIZE_GB: 7.91 | pin_memory: True
   - Estimated Time per Epoch: 4:34:04
   - Total Estimated Time: 9:08:08
 
- Loading Model and Loss Function 
+🤖 Loading Model and Loss Function...
 Loading Model e5-large-v2
-Compiling model with torch.compile() for better performance...
-Compiling model with torch.compile() for better performance...
-Model compilation successful
 e5-large-v2 Model Initialized
 Initializing Loss: MultipleNegativesRankingLoss
 Loss Initialized
   - Total Parameters: 335,141,888
   - Trainable Parameters: 335,141,888
 
- Initializing Optimizer...
- - Using Cosine with Restarts Schedule (optimal for 2 epochs)
+🔧 Initializing Optimizer...
+  - Using Cosine with Restarts Schedule (optimal for 2 epochs)
 
- Configuring Training Arguments...
-[W812 21:17:46.286933845 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W812 21:17:46.290943671 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W812 21:17:46.291444031 Utils.hpp:137] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
+📝 Configuring Training Arguments...
+[W812 21:30:12.887877903 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W812 21:30:12.891576924 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W812 21:30:12.892152877 Utils.hpp:137] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
 
- Setting up Evaluator...
+📊 Setting up Evaluator...
 
- Setting up Callbacks...
+🔔 Setting up Callbacks...
 
- Initializing Trainer...
+🚀 Initializing Trainer...
 /anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   import pkg_resources
-Model compilation successful
 e5-large-v2 Model Initialized
 Initializing Loss: MultipleNegativesRankingLoss
 Loss Initialized
   - Total Parameters: 335,141,888
   - Trainable Parameters: 335,141,888
 
- Initializing Optimizer...
- - Using Cosine with Restarts Schedule (optimal for 2 epochs)
+🔧 Initializing Optimizer...
+  - Using Cosine with Restarts Schedule (optimal for 2 epochs)
 
- Configuring Training Arguments...
-[W812 21:17:47.835959478 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W812 21:17:47.839550310 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W812 21:17:47.839994304 Utils.hpp:137] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
+📝 Configuring Training Arguments...
+[W812 21:30:13.799945698 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W812 21:30:13.803421188 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W812 21:30:13.803740274 Utils.hpp:137] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
 
- Setting up Evaluator...
+📊 Setting up Evaluator...
 
- Setting up Callbacks...
+🔔 Setting up Callbacks...
 
- Initializing Trainer...
-/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+🚀 Initializing Trainer...
+Computing widget examples:   0%|                                                                                                       | 0/1 [00:00<?, ?example/s]/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   import pkg_resources
-                                                                                                                                                                                         
+                                                                                                                                                                  
 ================================================================================
- STARTING TRAINING
- Start Time: 2025-08-12 21:17:48
- Estimated Completion: 2025-08-13 06:25:56
-================================================================================
-
-                                                                                                                                                                                         
-================================================================================
- STARTING TRAINING
- Start Time: 2025-08-12 21:17:49
- Estimated Completion: 2025-08-13 06:25:57
+🎯 STARTING TRAINING
+📅 Start Time: 2025-08-12 21:30:13
+⏱️ Estimated Completion: 2025-08-13 06:38:21
 ================================================================================
 
-[rank0]:[W812 21:17:52.846280802 Utils.hpp:112] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
-[rank1]:[W812 21:17:52.024408845 Utils.hpp:112] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
-  0%|                                                                                                                                                          | 0/65778 [00:00<?, ?it/s]
- Training Error: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
-    input = module(input, **module_kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
-    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
-    embedding_output = self.embeddings(
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
-    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
- Attempting to save current model state...
+                                                                                                                                                                  
+================================================================================
+🎯 STARTING TRAINING
+📅 Start Time: 2025-08-12 21:30:14
+⏱️ Estimated Completion: 2025-08-13 06:38:22
+================================================================================
 
- Training Error: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
-    input = module(input, **module_kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
-    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
-    embedding_output = self.embeddings(
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
-    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
- Attempting to save current model state...
- Error checkpoint saved to ../model/e5-large-v2-20250812211546-finetuned-icd-v50-production//error_checkpoint/
+[rank0]:[W812 21:30:17.889516169 Utils.hpp:112] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
+  0%|                                                                                                                                   | 0/65778 [00:00<?, ?it/s][rank1]:[W812 21:30:17.067714717 Utils.hpp:112] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
+{'loss': 4.1258, 'grad_norm': 14.91318130493164, 'learning_rate': 0.0, 'epoch': 0.0}                                                                              
+  0%|                                                                                                                       | 1/65778 [00:38<355:16:12, 19.44s/it]
+❌ Training Error: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 1: 389 390
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+❌ Training Error: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 0: 389 390
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+
+💾 Attempting to save current model state...💾 Attempting to save current model state...
+
+✅ Error checkpoint saved to ../model/e5-large-v2-20250812212818-finetuned-icd-v50-production//error_checkpoint/
 
 
- Training failed with error: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
-    input = module(input, **module_kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
-    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
-    embedding_output = self.embeddings(
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
-    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
+❌ Training failed with error: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 1: 389 390
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
 Traceback (most recent call last):
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 823, in <module>
-    except KeyboardInterrupt:
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 696, in main
-    training_success = True
+  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 831, in <module>
+    main(config, date_time)
+  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 704, in main
+    trainer.train()
   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2206, in train
     return inner_training_loop(
   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2548, in _inner_training_loop
     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 3797, in training_step
-    self.accelerator.backward(loss, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/accelerate/accelerator.py", line 2553, in backward
-    loss.backward(**kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/_tensor.py", line 648, in backward
-    torch.autograd.backward(
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/autograd/__init__.py", line 353, in backward
-    _engine_run_backward(
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/autograd/graph.py", line 824, in _engine_run_backward
-    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
-RuntimeError: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
-    input = module(input, **module_kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
-    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
-    embedding_output = self.embeddings(
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
-    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
- Error checkpoint saved to ../model/e5-large-v2-20250812211546-finetuned-icd-v50-production//error_checkpoint/
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 3749, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/trainer.py", line 406, in compute_loss
+    loss = loss_fn(features, labels)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/losses/MultipleNegativesRankingLoss.py", line 102, in forward
+    embeddings = [self.model(sentence_feature)["sentence_embedding"] for sentence_feature in sentence_features]
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/losses/MultipleNegativesRankingLoss.py", line 102, in <listcomp>
+    embeddings = [self.model(sentence_feature)["sentence_embedding"] for sentence_feature in sentence_features]
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1633, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1522, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 1: 389 390
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+
+✅ Cleanup completed
+✅ Error checkpoint saved to ../model/e5-large-v2-20250812212818-finetuned-icd-v50-production//error_checkpoint/
 
 
- Training failed with error: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
-    input = module(input, **module_kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
-    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
-    embedding_output = self.embeddings(
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
-    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
+❌ Training failed with error: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 0: 389 390
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
 Traceback (most recent call last):
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 823, in <module>
-    except KeyboardInterrupt:
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 696, in main
-    training_success = True
+  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 831, in <module>
+    main(config, date_time)
+  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 704, in main
+    trainer.train()
   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2206, in train
     return inner_training_loop(
   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2548, in _inner_training_loop
     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 3797, in training_step
-    self.accelerator.backward(loss, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/accelerate/accelerator.py", line 2553, in backward
-    loss.backward(**kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/_tensor.py", line 648, in backward
-    torch.autograd.backward(
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/autograd/__init__.py", line 353, in backward
-    _engine_run_backward(
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/autograd/graph.py", line 824, in _engine_run_backward
-    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
-RuntimeError: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
-    input = module(input, **module_kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
-    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
-    embedding_output = self.embeddings(
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
-    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 3749, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/trainer.py", line 406, in compute_loss
+    loss = loss_fn(features, labels)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/losses/MultipleNegativesRankingLoss.py", line 102, in forward
+    embeddings = [self.model(sentence_feature)["sentence_embedding"] for sentence_feature in sentence_features]
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/losses/MultipleNegativesRankingLoss.py", line 102, in <listcomp>
+    embeddings = [self.model(sentence_feature)["sentence_embedding"] for sentence_feature in sentence_features]
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1633, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1522, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 0: 389 390
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
 
- Cleanup completed
-
- Cleanup completed
+✅ Cleanup completed
