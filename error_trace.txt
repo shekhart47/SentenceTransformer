@@ -1,0 +1,259 @@
+(azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ torchrun --nproc_per_node=2 optimized_training_script.py
+W0812 21:15:40.638000 10183 site-packages/torch/distributed/run.py:766] 
+W0812 21:15:40.638000 10183 site-packages/torch/distributed/run.py:766] *****************************************
+W0812 21:15:40.638000 10183 site-packages/torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0812 21:15:40.638000 10183 site-packages/torch/distributed/run.py:766] *****************************************
+[W812 21:15:40.402322542 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W812 21:15:40.406666087 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+ Initializing Production Training Pipeline for H100 GPUs Initializing Production Training Pipeline for H100 GPUs
+
+ Date: 2025-08-12 21:15:45 Date: 2025-08-12 21:15:45
+
+ PyTorch Version: 2.7.1+cu126 PyTorch Version: 2.7.1+cu126
+
+ Transformers Version: 4.53.1 Transformers Version: 4.53.1
+
+ CUDA Available: True
+ CUDA Version: 12.6
+ CUDA Available: True
+ CUDA Version: 12.6
+ cuDNN Version: 90501 cuDNN Version: 90501
+
+
+================================================================================
+================================================================================
+
+GPU available: NVIDIA H100 NVL
+Number of GPUs: 2
+================================================================================
+PRODUCTION TRAINING ON H100 GPUs
+Target: High quality model in 3-4 days
+================================================================================
+
+ Loading Full Dataset
+GPU available: NVIDIA H100 NVLLoading datasets (this may take a few minutes for 50M samples)...
+
+Number of GPUs: 2
+================================================================================
+PRODUCTION TRAINING ON H100 GPUs
+Target: High quality model in 3-4 days
+================================================================================
+
+ Loading Full Dataset
+Loading datasets (this may take a few minutes for 50M samples)...
+Raw data loaded. Processing...
+Raw data loaded. Processing...
+Sampled evaluation data to 17580 examples
+Sampled evaluation data to 17580 examples
+Removed 700 NaN samples from training data
+Removed 700 NaN samples from training data
+Total Training Samples: (50516962, 3)
+Total Evaluation Samples: (17580, 3)
+Total Testing Samples: (417100, 3)
+Total Training Samples: (50516962, 3)
+Total Evaluation Samples: (17580, 3)
+Total Testing Samples: (417100, 3)
+Converting to HuggingFace datasets...
+Converting to HuggingFace datasets...
+Datasets ready for training
+Datasets ready for training
+
+ Configuring Optimized DataLoader...
+Recommended dataloader_num_workers: 12
+
+ Configuring Optimized DataLoader...
+Recommended dataloader_num_workers: 12
+AVAILABLE_MEMORY_GB: 604.50 | DATASET_MEMORY_SIZE_GB: 7.91 | pin_memory: True
+
+ World Size (GPUs): 2
+
+ Training Configuration:
+  - Dataset Size: 50,516,962 samples
+  - Batch Size per GPU: 256
+  - Effective Batch Size: 1,536
+  - Steps per Epoch: 32,889
+  - Total Training Steps: 65,778
+  - Warmup Steps: 6,577
+  - Estimated Time per Epoch: 4:34:04
+  - Total Estimated Time: 9:08:08
+
+ Loading Model and Loss Function 
+Loading Model e5-large-v2
+AVAILABLE_MEMORY_GB: 603.44 | DATASET_MEMORY_SIZE_GB: 7.91 | pin_memory: True
+
+ World Size (GPUs): 2
+
+ Training Configuration:
+  - Dataset Size: 50,516,962 samples
+  - Batch Size per GPU: 256
+  - Effective Batch Size: 1,536
+  - Steps per Epoch: 32,889
+  - Total Training Steps: 65,778
+  - Warmup Steps: 6,577
+  - Estimated Time per Epoch: 4:34:04
+  - Total Estimated Time: 9:08:08
+
+ Loading Model and Loss Function 
+Loading Model e5-large-v2
+Compiling model with torch.compile() for better performance...
+Compiling model with torch.compile() for better performance...
+Model compilation successful
+e5-large-v2 Model Initialized
+Initializing Loss: MultipleNegativesRankingLoss
+Loss Initialized
+  - Total Parameters: 335,141,888
+  - Trainable Parameters: 335,141,888
+
+ Initializing Optimizer...
+ - Using Cosine with Restarts Schedule (optimal for 2 epochs)
+
+ Configuring Training Arguments...
+[W812 21:17:46.286933845 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W812 21:17:46.290943671 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W812 21:17:46.291444031 Utils.hpp:137] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
+
+ Setting up Evaluator...
+
+ Setting up Callbacks...
+
+ Initializing Trainer...
+/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Model compilation successful
+e5-large-v2 Model Initialized
+Initializing Loss: MultipleNegativesRankingLoss
+Loss Initialized
+  - Total Parameters: 335,141,888
+  - Trainable Parameters: 335,141,888
+
+ Initializing Optimizer...
+ - Using Cosine with Restarts Schedule (optimal for 2 epochs)
+
+ Configuring Training Arguments...
+[W812 21:17:47.835959478 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W812 21:17:47.839550310 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W812 21:17:47.839994304 Utils.hpp:137] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
+
+ Setting up Evaluator...
+
+ Setting up Callbacks...
+
+ Initializing Trainer...
+/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+                                                                                                                                                                                         
+================================================================================
+ STARTING TRAINING
+ Start Time: 2025-08-12 21:17:48
+ Estimated Completion: 2025-08-13 06:25:56
+================================================================================
+
+                                                                                                                                                                                         
+================================================================================
+ STARTING TRAINING
+ Start Time: 2025-08-12 21:17:49
+ Estimated Completion: 2025-08-13 06:25:57
+================================================================================
+
+[rank0]:[W812 21:17:52.846280802 Utils.hpp:112] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
+[rank1]:[W812 21:17:52.024408845 Utils.hpp:112] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
+  0%|                                                                                                                                                          | 0/65778 [00:00<?, ?it/s]
+ Training Error: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
+    input = module(input, **module_kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
+    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
+    embedding_output = self.embeddings(
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
+    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
+ Attempting to save current model state...
+
+ Training Error: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
+    input = module(input, **module_kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
+    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
+    embedding_output = self.embeddings(
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
+    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
+ Attempting to save current model state...
+ Error checkpoint saved to ../model/e5-large-v2-20250812211546-finetuned-icd-v50-production//error_checkpoint/
+
+
+ Training failed with error: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
+    input = module(input, **module_kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
+    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
+    embedding_output = self.embeddings(
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
+    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
+Traceback (most recent call last):
+  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 823, in <module>
+    except KeyboardInterrupt:
+  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 696, in main
+    training_success = True
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2206, in train
+    return inner_training_loop(
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2548, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 3797, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/accelerate/accelerator.py", line 2553, in backward
+    loss.backward(**kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/_tensor.py", line 648, in backward
+    torch.autograd.backward(
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/autograd/__init__.py", line 353, in backward
+    _engine_run_backward(
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/autograd/graph.py", line 824, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
+    input = module(input, **module_kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
+    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
+    embedding_output = self.embeddings(
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
+    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
+ Error checkpoint saved to ../model/e5-large-v2-20250812211546-finetuned-icd-v50-production//error_checkpoint/
+
+
+ Training failed with error: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
+    input = module(input, **module_kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
+    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
+    embedding_output = self.embeddings(
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
+    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
+Traceback (most recent call last):
+  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 823, in <module>
+    except KeyboardInterrupt:
+  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 696, in main
+    training_success = True
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2206, in train
+    return inner_training_loop(
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2548, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 3797, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/accelerate/accelerator.py", line 2553, in backward
+    loss.backward(**kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/_tensor.py", line 648, in backward
+    torch.autograd.backward(
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/autograd/__init__.py", line 353, in backward
+    _engine_run_backward(
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/autograd/graph.py", line 824, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 758, in forward
+    input = module(input, **module_kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 442, in forward
+    outputs = self.auto_model(**trans_features, **kwargs, return_dict=True)
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 932, in forward
+    embedding_output = self.embeddings(
+  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 179, in forward
+    inputs_embeds = self.word_embeddings(input_ids). To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.
+
+ Cleanup completed
+
+ Cleanup completed
