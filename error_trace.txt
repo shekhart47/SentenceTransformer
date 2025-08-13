@@ -90,3 +90,40 @@ Training Started
 [rank0]:     anchors = embeddings[0]  # (batch_size, embedding_dim)
 [rank0]: IndexError: list index out of range
 
+🏃 View run e5-large-v2_finetuned_v50 at: https://a4339c1a-e285-4d77-8758-5c063a79c0b6.workspace.eastus.api.azureml.ms/mlflow/v2.0/subscriptions/67a66481-e8e3-4747-9a6b-825cfa6ac785/resourceGroups/xqrojjmb2wjlqop-common/providers/Microsoft.MachineLearningServices/workspaces/xqrojjmb2wjlqop-aml/#/experiments/1bc0e07a-ca3a-4e4e-89d3-354ae3bef59f/runs/a2745d44-31e0-4cdf-9d8a-6bb9b510aaac
+🧪 View experiment at: https://a4339c1a-e285-4d77-8758-5c063a79c0b6.workspace.eastus.api.azureml.ms/mlflow/v2.0/subscriptions/67a66481-e8e3-4747-9a6b-825cfa6ac785/resourceGroups/xqrojjmb2wjlqop-common/providers/Microsoft.MachineLearningServices/workspaces/xqrojjmb2wjlqop-aml/#/experiments/1bc0e07a-ca3a-4e4e-89d3-354ae3bef59f
+  0%|          | 0/124800 [00:34<?, ?it/s]                                                                                                                                                                    
+[rank0]:[W813 16:51:39.800106214 ProcessGroupNCCL.cpp:1479] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0813 16:51:40.177000 13178 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 13243 closing signal SIGTERM
+E0813 16:51:40.441000 13178 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 13244) of binary: /anaconda/envs/azureml_py310_sdkv2/bin/python
+Traceback (most recent call last):
+  File "/anaconda/envs/azureml_py310_sdkv2/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in main
+    run(args)
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/distributed/run.py", line 883, in run
+    elastic_launch(
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 139, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 270, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+optimized_training_script_v4.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-08-13_16:51:40
+  host      : localhost
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 13244)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+(azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ 
+(azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ 
