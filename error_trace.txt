@@ -1,109 +1,65 @@
-(azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ torchrun --nproc_per_node=2 optimized_training_script_v3.py
-W0813 05:46:00.480000 89897 site-packages/torch/distributed/run.py:766] 
-W0813 05:46:00.480000 89897 site-packages/torch/distributed/run.py:766] *****************************************
-W0813 05:46:00.480000 89897 site-packages/torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
-W0813 05:46:00.480000 89897 site-packages/torch/distributed/run.py:766] *****************************************
-[W813 05:46:00.243413136 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W813 05:46:00.246790635 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+(azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ torchrun --nproc_per_node=2 optimized_training_script_v4.py
+W0813 16:23:28.441000 8405 site-packages/torch/distributed/run.py:766] 
+W0813 16:23:28.441000 8405 site-packages/torch/distributed/run.py:766] *****************************************
+W0813 16:23:28.441000 8405 site-packages/torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0813 16:23:28.441000 8405 site-packages/torch/distributed/run.py:766] *****************************************
+[W813 16:23:28.807782152 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 16:23:28.814141796 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
 Load Parameters
 Load Parameters
-Loading Datasets with optimizations...
-Loading datasets with optimizations...
-Loading training data...
-Loading Datasets with optimizations...
-Loading datasets with optimizations...
-Loading training data...
-Loading evaluation data...
-Loading evaluation data...
-Loading test data...
-Loading test data...
-Final Training Samples: (51114310, 3)
-Final Evaluation Samples: (5000, 3)
-Final Testing Samples: (10000, 3)
-Converting to HuggingFace datasets...
-Final Training Samples: (51114310, 3)
-Final Evaluation Samples: (5000, 3)
-Final Testing Samples: (10000, 3)
-Converting to HuggingFace datasets...
-Setting Up Optimized Dataloader Settings
-Recommended dataloader_num_workers : 12
-Setting Up Optimized Dataloader Settings
-Recommended dataloader_num_workers : 12
-AVAILABLE_MEMORY_GB : 597.92 | DATASET_SIZE_GB : 7.91 | pin_memory : True
-WORLD_SIZE : 2
-AVAILABLE_MEMORY_GB : 600.02 | DATASET_SIZE_GB : 7.91 | pin_memory : TrueDataset size: 51,114,310
-
-Effective batch size: 8192
-Steps per epoch: 6240
-Total training steps: 62400
-Warmup steps: 6240
+Loading Datasets
+Loading Datasets
+Setting Up Dataloader Num Workers & PIN Meory Flag
+Setting Up Dataloader Num Workers & PIN Meory Flag
+Recommended dataloader_num_workers : 6
+AVAILABLE_MEMORY_GB : 621.5341148376465 | DATASET_MEMORY_SIZE_GB : 8.103603198051452 pin_memory : True
+Recommended dataloader_num_workers : 6
+AVAILABLE_MEMORY_GB : 621.5341148376465 | DATASET_MEMORY_SIZE_GB : 8.103603198051452 pin_memory : True
 Datasets Loaded
 ..............
 Loading Model e5-large-v2
-WORLD_SIZE : 2
-Dataset size: 51,114,310
-Effective batch size: 8192
-Steps per epoch: 6240
-Total training steps: 62400
-Warmup steps: 6240
 Datasets Loaded
 ..............
 Loading Model e5-large-v2
-e5-large-v2 Model Initialized with max_seq_length=256
+e5-large-v2 Model Initialized
 ...........
-Initializing Loss : MNR
+Initalizing Loss : MNR
 Loss Initialized
 ..............
 Initializing Optimizer
 Learning Rate Scheduler Selected : cosine
 Load Sentence Transformer Training Arguments
-[W813 05:47:49.393110898 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-e5-large-v2 Model Initialized with max_seq_length=256
+[W813 16:25:08.117447144 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 16:25:08.121215821 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+e5-large-v2 Model Initialized
 ...........
-Initializing Loss : MNR
+Initalizing Loss : MNR
 Loss Initialized
 ..............
 Initializing Optimizer
 Learning Rate Scheduler Selected : cosine
 Load Sentence Transformer Training Arguments
-[W813 05:47:49.409899461 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W813 05:47:49.446882860 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W813 05:47:49.458426623 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-Enabling smart batching for length-aware batch creation...
-Enabling smart batching for length-aware batch creation...
-/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-Training Started with optimizations                                                                                                                               
-Training Started with optimizations                                                                                                                               
-[rank1]: Traceback (most recent call last):
-[rank1]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v3.py", line 570, in <module>
-[rank1]:     main(config, date_time)
-[rank1]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v3.py", line 546, in main
-[rank1]:     trainer.train()
-[rank1]:   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2206, in train
-[rank1]:     return inner_training_loop(
-[rank1]:   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2256, in _inner_training_loop
-[rank1]:     train_dataloader = self.get_train_dataloader()
-[rank1]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/trainer.py", line 717, in get_train_dataloader
-[rank1]:     valid_label_columns=data_collator.valid_label_columns,
-[rank1]: AttributeError: 'function' object has no attribute 'valid_label_columns'
+[W813 16:25:08.139244043 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 16:25:08.142625686 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
 [rank0]: Traceback (most recent call last):
-[rank0]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v3.py", line 570, in <module>
+[rank0]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 456, in <module>
 [rank0]:     main(config, date_time)
-[rank0]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v3.py", line 546, in main
-[rank0]:     trainer.train()
-[rank0]:   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2206, in train
-[rank0]:     return inner_training_loop(
-[rank0]:   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2256, in _inner_training_loop
-[rank0]:     train_dataloader = self.get_train_dataloader()
-[rank0]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/trainer.py", line 717, in get_train_dataloader
-[rank0]:     valid_label_columns=data_collator.valid_label_columns,
-[rank0]: AttributeError: 'function' object has no attribute 'valid_label_columns'
-[rank0]:[W813 05:47:52.015838929 ProcessGroupNCCL.cpp:1479] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
-W0813 05:47:52.931000 89897 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 89962 closing signal SIGTERM
-E0813 05:47:53.045000 89897 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 89963) of binary: /anaconda/envs/azureml_py310_sdkv2/bin/python
+[rank0]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 398, in main
+[rank0]:     anchors=eval_dataset["anchor"],
+[rank0]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/utils/data/dataset.py", line 59, in __getitem__
+[rank0]:     raise NotImplementedError("Subclasses of Dataset should implement __getitem__.")
+[rank0]: NotImplementedError: Subclasses of Dataset should implement __getitem__.
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 456, in <module>
+[rank1]:     main(config, date_time)
+[rank1]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 398, in main
+[rank1]:     anchors=eval_dataset["anchor"],
+[rank1]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/utils/data/dataset.py", line 59, in __getitem__
+[rank1]:     raise NotImplementedError("Subclasses of Dataset should implement __getitem__.")
+[rank1]: NotImplementedError: Subclasses of Dataset should implement __getitem__.
+[rank0]:[W813 16:25:09.868342956 ProcessGroupNCCL.cpp:1479] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0813 16:25:10.226000 8405 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 8478 closing signal SIGTERM
+E0813 16:25:10.290000 8405 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 0 (pid: 8477) of binary: /anaconda/envs/azureml_py310_sdkv2/bin/python
 Traceback (most recent call last):
   File "/anaconda/envs/azureml_py310_sdkv2/bin/torchrun", line 8, in <module>
     sys.exit(main())
@@ -119,17 +75,17 @@ Traceback (most recent call last):
     raise ChildFailedError(
 torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
 ============================================================
-optimized_training_script_v3.py FAILED
+optimized_training_script_v4.py FAILED
 ------------------------------------------------------------
 Failures:
   <NO_OTHER_FAILURES>
 ------------------------------------------------------------
 Root Cause (first observed failure):
 [0]:
-  time      : 2025-08-13_05:47:52
+  time      : 2025-08-13_16:25:10
   host      : localhost
-  rank      : 1 (local_rank: 1)
-  exitcode  : 1 (pid: 89963)
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 8477)
   error_file: <N/A>
   traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
 ============================================================
