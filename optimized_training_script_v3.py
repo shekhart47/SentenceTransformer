@@ -342,7 +342,118 @@ def get_timestamp():
     date_time = item1 + item2
     return date_time
 
-# Removed unused function - smart batching is handled directly in main()
+class SmartBatchingDataCollator:
+    """
+    Custom data collator for smart batching with length-aware padding optimization
+    """
+    def __init__(self, model, max_seq_length=256):
+        self.model = model
+        self.max_seq_length = max_seq_length
+        self.valid_label_columns = []  # Required by SentenceTransformerTrainer
+        
+        # Get the tokenizer from the model
+        self.tokenizer = None
+        for module in model.modules():
+            if hasattr(module, 'tokenizer'):
+                self.tokenizer = module.tokenizer
+                break
+        
+        if self.tokenizer is None:
+            # Fallback: try to get tokenizer from the first module
+            if hasattr(model, '_modules') and len(model._modules) > 0:
+                first_module = list(model._modules.values())[0]
+                if hasattr(first_module, 'tokenizer'):
+                    self.tokenizer = first_module.tokenizer
+    
+    def __call__(self, batch):
+        """
+        Smart batching collate function that minimizes padding by sorting batch by length
+        """
+        if not batch:
+            return batch
+            
+        # Handle different input formats
+        if isinstance(batch[0], dict):
+            # HuggingFace Dataset format: {'anchor': str, 'positives': str, 'negatives': str}
+            texts_batch = []
+            for item in batch:
+                texts_batch.append([item['anchor'], item['positives'], item['negatives']])
+        elif hasattr(batch[0], 'texts'):
+            # InputExample format
+            texts_batch = [item.texts for item in batch]
+        else:
+            # Assume it's already a list of text lists
+            texts_batch = batch
+        
+        # Calculate text lengths for smart sorting within the batch
+        def get_total_length(texts):
+            return sum(len(text.split()) for text in texts if text)
+        
+        # Sort batch by total length for better padding efficiency
+        indexed_batch = [(i, texts, get_total_length(texts)) for i, texts in enumerate(texts_batch)]
+        indexed_batch.sort(key=lambda x: x[2])  # Sort by total length
+        
+        # Extract sorted texts
+        sorted_texts = [item[1] for item in indexed_batch]
+        original_indices = [item[0] for item in indexed_batch]
+        
+        # Use model's smart batching if available, otherwise use custom tokenization
+        if hasattr(self.model, 'smart_batching_collate'):
+            try:
+                # Convert back to InputExample format for model's smart_batching_collate
+                from sentence_transformers.readers import InputExample
+                input_examples = [InputExample(texts=texts) for texts in sorted_texts]
+                result = self.model.smart_batching_collate(input_examples)
+                return result
+            except Exception as e:
+                print(f"Smart batching fallback due to error: {e}")
+                # Fallback to custom tokenization
+                pass
+        
+        # Custom tokenization with smart padding
+        return self._custom_tokenize_batch(sorted_texts)
+    
+    def _custom_tokenize_batch(self, texts_batch):
+        """
+        Custom tokenization with minimal padding
+        """
+        if self.tokenizer is None:
+            raise ValueError("No tokenizer found in model")
+        
+        # Flatten all texts for tokenization
+        all_texts = []
+        for texts in texts_batch:
+            all_texts.extend(texts)
+        
+        # Tokenize all texts
+        tokenized = self.tokenizer(
+            all_texts,
+            max_length=self.max_seq_length,
+            truncation=True,
+            padding=True,  # Pad to max length in this batch
+            return_tensors='pt'
+        )
+        
+        # Reshape back to batch format (assuming triplets: anchor, positive, negative)
+        batch_size = len(texts_batch)
+        texts_per_example = len(texts_batch[0]) if texts_batch else 3
+        
+        # Reshape tensors
+        input_ids = tokenized['input_ids'].view(batch_size, texts_per_example, -1)
+        attention_mask = tokenized['attention_mask'].view(batch_size, texts_per_example, -1)
+        
+        result = {
+            'input_ids': input_ids,
+            'attention_mask': attention_mask
+        }
+        
+        # Add token_type_ids if present
+        if 'token_type_ids' in tokenized:
+            result['token_type_ids'] = tokenized['token_type_ids'].view(batch_size, texts_per_example, -1)
+        
+        return result
+
+# Removed unused function comment
 
 def get_SentenceTransformerTrainingArguments(config):
     args = SentenceTransformerTrainingArguments(
@@ -504,8 +615,10 @@ def main(config, date_time):
     if config.SMART_BATCHING:
         print("Enabling smart batching for length-aware batch creation...")
         # Create custom data collator for smart batching
-        smart_collate_fn = model.smart_batching_collate
-        
+        smart_data_collator = SmartBatchingDataCollator(
+        model=model, 
+        max_seq_length=config.MAX_SEQ_LENGTH)
+            
         trainer = SentenceTransformerTrainer(
             model=model,
             args=args,
@@ -518,7 +631,7 @@ def main(config, date_time):
                 OptimizedProgressCallback()  # Use optimized progress callback
             ],
             optimizers=(optimizer, scheduler),
-            data_collator=smart_collate_fn,  # Enable smart batching
+            data_collator=smart_data_collator,  # Enable smart batching
         )
     else:
         trainer = SentenceTransformerTrainer(
