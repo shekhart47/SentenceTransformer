@@ -1,25 +1,25 @@
 (azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ torchrun --nproc_per_node=2 optimized_training_script_v4.py
-W0813 16:50:01.204000 13178 site-packages/torch/distributed/run.py:766] 
-W0813 16:50:01.204000 13178 site-packages/torch/distributed/run.py:766] *****************************************
-W0813 16:50:01.204000 13178 site-packages/torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
-W0813 16:50:01.204000 13178 site-packages/torch/distributed/run.py:766] *****************************************
-[W813 16:50:01.571463581 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W813 16:50:01.574643143 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+W0813 17:02:16.808000 15301 site-packages/torch/distributed/run.py:766] 
+W0813 17:02:16.808000 15301 site-packages/torch/distributed/run.py:766] *****************************************
+W0813 17:02:16.808000 15301 site-packages/torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0813 17:02:16.808000 15301 site-packages/torch/distributed/run.py:766] *****************************************
+[W813 17:02:16.177865168 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 17:02:16.181695746 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
 Load Parameters
 Load Parameters
 Loading Datasets
 Loading Datasets
-Loading dataset shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 18/18 [00:00<00:00, 31.43it/s]
-Loading dataset shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 18/18 [00:00<00:00, 21.03it/s]
+Loading dataset shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 18/18 [00:00<00:00, 29.10it/s]
+Loading dataset shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 18/18 [00:00<00:00, 23.57it/s]
 Setting Up Dataloader Num Workers & PIN Meory Flag
 Recommended dataloader_num_workers : 6
-AVAILABLE_MEMORY_GB : 620.5052680969238 | DATASET_MEMORY_SIZE_GB : 8.103603198051452 pin_memory : True
+AVAILABLE_MEMORY_GB : 620.7419662475586 | DATASET_MEMORY_SIZE_GB : 8.103603198051452 pin_memory : True
 Datasets Loaded
 ..............
 Loading Model e5-large-v2
 Setting Up Dataloader Num Workers & PIN Meory Flag
 Recommended dataloader_num_workers : 6
-AVAILABLE_MEMORY_GB : 620.4955978393555 | DATASET_MEMORY_SIZE_GB : 8.103603198051452 pin_memory : True
+AVAILABLE_MEMORY_GB : 620.7383308410645 | DATASET_MEMORY_SIZE_GB : 8.103603198051452 pin_memory : True
 Datasets Loaded
 ..............
 Loading Model e5-large-v2
@@ -39,10 +39,10 @@ Loss Initialized
 Initializing Optimizer
 Learning Rate Scheduler Selected : cosine
 Load Sentence Transformer Training Arguments
-[W813 16:50:58.940182427 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W813 16:50:58.941789674 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W813 16:50:58.943095407 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W813 16:50:58.945990202 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 17:03:25.467729504 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 17:03:25.469732535 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 17:03:25.479032983 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 17:03:25.482292437 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
 /anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   import pkg_resources
 /anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
@@ -50,9 +50,9 @@ Load Sentence Transformer Training Arguments
 Training Started                                                                                                                                                                                              
 Training Started                                                                                                                                                                                              
   0%|                                                                                                                                                                              | 0/124800 [00:00<?, ?it/s][rank1]: Traceback (most recent call last):
-[rank1]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 489, in <module>
+[rank1]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 513, in <module>
 [rank1]:     main(config, date_time)
-[rank1]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 466, in main
+[rank1]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 490, in main
 [rank1]:     trainer.train()
 [rank1]:   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2206, in train
 [rank1]:     return inner_training_loop(
@@ -60,19 +60,13 @@ Training Started
 [rank1]:     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
 [rank1]:   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 3749, in training_step
 [rank1]:     loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
-[rank1]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/trainer.py", line 406, in compute_loss
-[rank1]:     loss = loss_fn(features, labels)
-[rank1]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-[rank1]:     return self._call_impl(*args, **kwargs)
-[rank1]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-[rank1]:     return forward_call(*args, **kwargs)
-[rank1]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/losses/MultipleNegativesRankingLoss.py", line 103, in forward
-[rank1]:     anchors = embeddings[0]  # (batch_size, embedding_dim)
-[rank1]: IndexError: list index out of range
+[rank1]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/trainer.py", line 391, in compute_loss
+[rank1]:     dataset_name = inputs.pop("dataset_name", None)
+[rank1]: TypeError: pop expected at most 1 argument, got 2
 [rank0]: Traceback (most recent call last):
-[rank0]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 489, in <module>
+[rank0]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 513, in <module>
 [rank0]:     main(config, date_time)
-[rank0]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 466, in main
+[rank0]:   File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 490, in main
 [rank0]:     trainer.train()
 [rank0]:   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2206, in train
 [rank0]:     return inner_training_loop(
@@ -80,22 +74,15 @@ Training Started
 [rank0]:     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
 [rank0]:   File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 3749, in training_step
 [rank0]:     loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
-[rank0]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/trainer.py", line 406, in compute_loss
-[rank0]:     loss = loss_fn(features, labels)
-[rank0]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-[rank0]:     return self._call_impl(*args, **kwargs)
-[rank0]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-[rank0]:     return forward_call(*args, **kwargs)
-[rank0]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/losses/MultipleNegativesRankingLoss.py", line 103, in forward
-[rank0]:     anchors = embeddings[0]  # (batch_size, embedding_dim)
-[rank0]: IndexError: list index out of range
-
-🏃 View run e5-large-v2_finetuned_v50 at: https://a4339c1a-e285-4d77-8758-5c063a79c0b6.workspace.eastus.api.azureml.ms/mlflow/v2.0/subscriptions/67a66481-e8e3-4747-9a6b-825cfa6ac785/resourceGroups/xqrojjmb2wjlqop-common/providers/Microsoft.MachineLearningServices/workspaces/xqrojjmb2wjlqop-aml/#/experiments/1bc0e07a-ca3a-4e4e-89d3-354ae3bef59f/runs/a2745d44-31e0-4cdf-9d8a-6bb9b510aaac
+[rank0]:   File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/trainer.py", line 391, in compute_loss
+[rank0]:     dataset_name = inputs.pop("dataset_name", None)
+[rank0]: TypeError: pop expected at most 1 argument, got 2
+🏃 View run e5-large-v2_finetuned_v50 at: https://a4339c1a-e285-4d77-8758-5c063a79c0b6.workspace.eastus.api.azureml.ms/mlflow/v2.0/subscriptions/67a66481-e8e3-4747-9a6b-825cfa6ac785/resourceGroups/xqrojjmb2wjlqop-common/providers/Microsoft.MachineLearningServices/workspaces/xqrojjmb2wjlqop-aml/#/experiments/1bc0e07a-ca3a-4e4e-89d3-354ae3bef59f/runs/dddca124-6b10-4734-b9e8-b64a6fb0b2a7
 🧪 View experiment at: https://a4339c1a-e285-4d77-8758-5c063a79c0b6.workspace.eastus.api.azureml.ms/mlflow/v2.0/subscriptions/67a66481-e8e3-4747-9a6b-825cfa6ac785/resourceGroups/xqrojjmb2wjlqop-common/providers/Microsoft.MachineLearningServices/workspaces/xqrojjmb2wjlqop-aml/#/experiments/1bc0e07a-ca3a-4e4e-89d3-354ae3bef59f
   0%|          | 0/124800 [00:34<?, ?it/s]                                                                                                                                                                    
-[rank0]:[W813 16:51:39.800106214 ProcessGroupNCCL.cpp:1479] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
-W0813 16:51:40.177000 13178 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 13243 closing signal SIGTERM
-E0813 16:51:40.441000 13178 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 13244) of binary: /anaconda/envs/azureml_py310_sdkv2/bin/python
+[rank0]:[W813 17:04:04.331049684 ProcessGroupNCCL.cpp:1479] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0813 17:04:05.715000 15301 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 15366 closing signal SIGTERM
+E0813 17:04:05.980000 15301 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 15367) of binary: /anaconda/envs/azureml_py310_sdkv2/bin/python
 Traceback (most recent call last):
   File "/anaconda/envs/azureml_py310_sdkv2/bin/torchrun", line 8, in <module>
     sys.exit(main())
@@ -118,12 +105,11 @@ Failures:
 ------------------------------------------------------------
 Root Cause (first observed failure):
 [0]:
-  time      : 2025-08-13_16:51:40
+  time      : 2025-08-13_17:04:05
   host      : localhost
   rank      : 1 (local_rank: 1)
-  exitcode  : 1 (pid: 13244)
+  exitcode  : 1 (pid: 15367)
   error_file: <N/A>
   traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
 ============================================================
-(azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ 
 (azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ 
