@@ -342,41 +342,7 @@ def get_timestamp():
     date_time = item1 + item2
     return date_time
 
-def create_length_sorted_dataloader(dataset, batch_size, num_workers, pin_memory, persistent_workers, drop_last=True):
-    """Create a DataLoader with length-based sorting for smart batching"""
-    from torch.utils.data import DataLoader
-    from sentence_transformers.datasets import SentenceLabelDataset
-    
-    # Convert dataset to InputExample format if needed
-    examples = []
-    for item in dataset:
-        if hasattr(item, 'texts'):
-            examples.append(item)
-        else:
-            # Convert dict to InputExample
-            examples.append(InputExample(texts=[item['anchor'], item['positives'], item['negatives']]))
-    
-    # Sort by combined length of all texts for better batching
-    def get_text_length(example):
-        if hasattr(example, 'texts'):
-            return sum(len(text.split()) for text in example.texts)
-        return 0
-    
-    examples.sort(key=get_text_length)
-    
-    # Create DataLoader with sorted examples
-    dataloader = DataLoader(
-        examples,
-        batch_size=batch_size,
-        shuffle=False,  # Don't shuffle since we want length-sorted batches
-        num_workers=num_workers,
-        pin_memory=pin_memory,
-        persistent_workers=persistent_workers,
-        drop_last=drop_last,
-        collate_fn=None  # Will use model's default collate function
-    )
-    
-    return dataloader
+# Removed unused function - smart batching is handled directly in main()
 
 def get_SentenceTransformerTrainingArguments(config):
     args = SentenceTransformerTrainingArguments(
@@ -538,7 +504,7 @@ def main(config, date_time):
     if config.SMART_BATCHING:
         print("Enabling smart batching for length-aware batch creation...")
         # Create custom data collator for smart batching
-        smart_collate_fn = create_smart_batching_collate_fn(model, config.MAX_SEQ_LENGTH)
+        smart_collate_fn = model.smart_batching_collate
         
         trainer = SentenceTransformerTrainer(
             model=model,
@@ -552,7 +518,7 @@ def main(config, date_time):
                 OptimizedProgressCallback()  # Use optimized progress callback
             ],
             optimizers=(optimizer, scheduler),
-            data_collator=model.smart_batching_collate,  # Enable smart batching
+            data_collator=smart_collate_fn,  # Enable smart batching
         )
     else:
         trainer = SentenceTransformerTrainer(
