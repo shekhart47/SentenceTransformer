@@ -1,78 +1,43 @@
-import torch
 from transformers import AutoTokenizer
+import numpy as np
+import os
 
-class TripletCollator:
-    """
-    Collator for (anchor, positives, negatives) triplets expected by
-    SentenceTransformerTrainer.  It pads each field separately and returns
-    a list of dicts: [anchor_batch, positive_batch, negative_batch].
-    """
-    def __init__(self, model_name: str, pad_to_multiple_of: int = 8):
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.pad_to_multiple_of = pad_to_multiple_of
-        # no label columns for triplet/MNR training
-        self.valid_label_columns = []
+tokenizer = AutoTokenizer.from_pretrained(config.MODEL_NAME, use_fast=True)
 
-    def _pad_batch(self, tokenized_examples):
-        """
-        Given a dict with lists of 'input_ids' and 'attention_mask', pad them
-        to a common length (optionally rounded up to pad_to_multiple_of).
-        """
-        input_ids = tokenized_examples['input_ids']
-        attention = tokenized_examples['attention_mask']
-        # Find the longest sequence
-        max_len = max(len(ids) for ids in input_ids)
-        if self.pad_to_multiple_of:
-            # Round up to nearest multiple for tensor core efficiency
-            m = self.pad_to_multiple_of
-            max_len = ((max_len + m - 1) // m) * m
+def add_triplet_length(batch):
+    # Concatenate to one long list to tokenize once.
+    n = len(batch['anchor'])
+    all_texts = batch['anchor'] + batch['positives'] + batch['negatives']
 
-        padded_ids = []
-        padded_mask = []
-        pad_id = self.tokenizer.pad_token_id
-        for ids, mask in zip(input_ids, attention):
-            ids = ids + [pad_id] * (max_len - len(ids))
-            mask = mask + [0] * (max_len - len(mask))
-            padded_ids.append(torch.tensor(ids))
-            padded_mask.append(torch.tensor(mask))
-        return {
-            'input_ids': torch.stack(padded_ids),      # shape (batch_size, max_len)
-            'attention_mask': torch.stack(padded_mask) # shape (batch_size, max_len)
-        }
+    # Fast batch tokenization; ask only for lengths
+    out = tokenizer(
+        all_texts,
+        add_special_tokens=False,
+        return_length=True,
+        padding=False,
+        truncation=False
+    )
+    lens = np.asarray(out['length'], dtype=np.int32)
 
-    def __call__(self, features):
-        """
-        `features` is a list of examples, each example a dict with keys
-        'anchor', 'positives', and 'negatives'.  We return a list of three
-        dicts, one per role.
-        """
-        anchors   = [feat['anchor']    for feat in features]
-        positives = [feat['positives'] for feat in features]
-        negatives = [feat['negatives'] for feat in features]
+    # Slice back by role
+    anchor_len   = lens[:n]
+    positive_len = lens[n:2*n]
+    negative_len = lens[2*n:]
 
-        # Tokenize without padding; we will pad per-role
-        tok_anchors   = self.tokenizer(anchors,   padding=False, truncation=True)
-        tok_positives = self.tokenizer(positives, padding=False, truncation=True)
-        tok_negatives = self.tokenizer(negatives, padding=False, truncation=True)
+    # Max length across the triplet
+    triplet_len = np.maximum.reduce([anchor_len, positive_len, negative_len])
 
-        # Pad each role separately
-        batch_anchor   = self._pad_batch(tok_anchors)
-        batch_positive = self._pad_batch(tok_positives)
-        batch_negative = self._pad_batch(tok_negatives)
+    return {'triplet_length': triplet_len.tolist()}
 
-        # Return in the order (anchor, positive, negative)
-        return [batch_anchor, batch_positive, batch_negative]
+# Choose large batch size; tune based on RAM/CPU cache
+BATCHED_SIZE = 8192  # try 8k, 16k, 32k
+NUM_PROC = max(2, os.cpu_count() - 2)
 
-collator = TripletCollator(config.MODEL_NAME, pad_to_multiple_of=8)
-
-trainer = SentenceTransformerTrainer(
-    model=model,
-    args=args,
-    train_dataset=train_dataset,
-    eval_dataset=eval_dataset,
-    loss=loss,
-    evaluator=dev_evaluator,
-    data_collator=collator,
-    callbacks=[...],
-    optimizers=(optimizer, scheduler),
+train_dataset = train_dataset.map(
+    add_triplet_length,
+    batched=True,
+    batch_size=BATCHED_SIZE,
+    num_proc=NUM_PROC,
+    remove_columns=[],          # don't drop anything
+    desc="Computing triplet lengths"
 )
