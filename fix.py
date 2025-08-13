@@ -62,3 +62,17 @@ class TripletCollator:
 
         # Return in the order (anchor, positive, negative)
         return [batch_anchor, batch_positive, batch_negative]
+
+collator = TripletCollator(config.MODEL_NAME, pad_to_multiple_of=8)
+
+trainer = SentenceTransformerTrainer(
+    model=model,
+    args=args,
+    train_dataset=train_dataset,
+    eval_dataset=eval_dataset,
+    loss=loss,
+    evaluator=dev_evaluator,
+    data_collator=collator,
+    callbacks=[...],
+    optimizers=(optimizer, scheduler),
+)
