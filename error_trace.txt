@@ -1,258 +1,214 @@
-(azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ torchrun --nproc_per_node=2 optimized_training_script.py
-W0812 21:28:14.554000 14189 site-packages/torch/distributed/run.py:766] 
-W0812 21:28:14.554000 14189 site-packages/torch/distributed/run.py:766] *****************************************
-W0812 21:28:14.554000 14189 site-packages/torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
-W0812 21:28:14.554000 14189 site-packages/torch/distributed/run.py:766] *****************************************
-[W812 21:28:14.316369726 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W812 21:28:14.320327246 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-🚀 Initializing Production Training Pipeline for H100 GPUs
-📅 Date: 2025-08-12 21:28:18
-🔧 PyTorch Version: 2.7.1+cu126
-🔧 Transformers Version: 4.53.1
-🚀 Initializing Production Training Pipeline for H100 GPUs
-📅 Date: 2025-08-12 21:28:18
-🔧 PyTorch Version: 2.7.1+cu126
-🔧 Transformers Version: 4.53.1
-🔧 CUDA Available: True
-🔧 CUDA Version: 12.6
-🔧 CUDA Available: True
-🔧 CUDA Version: 12.6
-🔧 cuDNN Version: 90501
-
-================================================================================
-🔧 cuDNN Version: 90501
-
-================================================================================
-GPU available: NVIDIA H100 NVL
-Number of GPUs: 2
-================================================================================
-PRODUCTION TRAINING ON H100 GPUs
-Target: High quality model in 3-4 days
-================================================================================
-
-📊 Loading Full Dataset (50M+ samples)...
-Loading datasets (this may take a few minutes for 50M samples)...
-GPU available: NVIDIA H100 NVL
-Number of GPUs: 2
-================================================================================
-PRODUCTION TRAINING ON H100 GPUs
-Target: High quality model in 3-4 days
-================================================================================
-
-📊 Loading Full Dataset (50M+ samples)...
-Loading datasets (this may take a few minutes for 50M samples)...
-Raw data loaded. Processing...
-Raw data loaded. Processing...
-Sampled evaluation data to 17580 examples
-Sampled evaluation data to 17580 examples
-Removed 700 NaN samples from training data
-Removed 700 NaN samples from training data
-Total Training Samples: (50516962, 3)
-Total Evaluation Samples: (17580, 3)
-Total Testing Samples: (417100, 3)
-Total Training Samples: (50516962, 3)
-Total Evaluation Samples: (17580, 3)
-Total Testing Samples: (417100, 3)
-Converting to HuggingFace datasets...
-Converting to HuggingFace datasets...
-Datasets ready for training
-Datasets ready for training
-
-⚙️ Configuring Optimized DataLoader...
-Recommended dataloader_num_workers: 12
-
-⚙️ Configuring Optimized DataLoader...
-Recommended dataloader_num_workers: 12
-AVAILABLE_MEMORY_GB: 604.44 | DATASET_MEMORY_SIZE_GB: 7.91 | pin_memory: True
-
-🌍 World Size (GPUs): 2
-
-📈 Training Configuration:
-  - Dataset Size: 50,516,962 samples
-  - Batch Size per GPU: 256
-  - Effective Batch Size: 1,536
-  - Steps per Epoch: 32,889
-  - Total Training Steps: 65,778
-  - Warmup Steps: 6,577
-  - Estimated Time per Epoch: 4:34:04
-  - Total Estimated Time: 9:08:08
-
-🤖 Loading Model and Loss Function...
-Loading Model e5-large-v2
-AVAILABLE_MEMORY_GB: 604.05 | DATASET_MEMORY_SIZE_GB: 7.91 | pin_memory: True
-
-🌍 World Size (GPUs): 2
-
-📈 Training Configuration:
-  - Dataset Size: 50,516,962 samples
-  - Batch Size per GPU: 256
-  - Effective Batch Size: 1,536
-  - Steps per Epoch: 32,889
-  - Total Training Steps: 65,778
-  - Warmup Steps: 6,577
-  - Estimated Time per Epoch: 4:34:04
-  - Total Estimated Time: 9:08:08
-
-🤖 Loading Model and Loss Function...
-Loading Model e5-large-v2
-e5-large-v2 Model Initialized
-Initializing Loss: MultipleNegativesRankingLoss
-Loss Initialized
-  - Total Parameters: 335,141,888
-  - Trainable Parameters: 335,141,888
-
-🔧 Initializing Optimizer...
-  - Using Cosine with Restarts Schedule (optimal for 2 epochs)
-
-📝 Configuring Training Arguments...
-[W812 21:30:12.887877903 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W812 21:30:12.891576924 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W812 21:30:12.892152877 Utils.hpp:137] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
-
-📊 Setting up Evaluator...
-
-🔔 Setting up Callbacks...
-
-🚀 Initializing Trainer...
-/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-e5-large-v2 Model Initialized
-Initializing Loss: MultipleNegativesRankingLoss
-Loss Initialized
-  - Total Parameters: 335,141,888
-  - Trainable Parameters: 335,141,888
-
-🔧 Initializing Optimizer...
-  - Using Cosine with Restarts Schedule (optimal for 2 epochs)
-
-📝 Configuring Training Arguments...
-[W812 21:30:13.799945698 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W812 21:30:13.803421188 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W812 21:30:13.803740274 Utils.hpp:137] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
-
-📊 Setting up Evaluator...
-
-🔔 Setting up Callbacks...
-
-🚀 Initializing Trainer...
-Computing widget examples:   0%|                                                                                                       | 0/1 [00:00<?, ?example/s]/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-                                                                                                                                                                  
-================================================================================
-🎯 STARTING TRAINING
-📅 Start Time: 2025-08-12 21:30:13
-⏱️ Estimated Completion: 2025-08-13 06:38:21
-================================================================================
-
-                                                                                                                                                                  
-================================================================================
-🎯 STARTING TRAINING
-📅 Start Time: 2025-08-12 21:30:14
-⏱️ Estimated Completion: 2025-08-13 06:38:22
-================================================================================
-
-[rank0]:[W812 21:30:17.889516169 Utils.hpp:112] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
-  0%|                                                                                                                                   | 0/65778 [00:00<?, ?it/s][rank1]:[W812 21:30:17.067714717 Utils.hpp:112] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
-{'loss': 4.1258, 'grad_norm': 14.91318130493164, 'learning_rate': 0.0, 'epoch': 0.0}                                                                              
-  0%|                                                                                                                       | 1/65778 [00:38<355:16:12, 19.44s/it]
-❌ Training Error: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
-making sure all `forward` function outputs participate in calculating loss. 
-If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
-Parameter indices which did not receive grad for rank 1: 389 390
- In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
-❌ Training Error: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
-making sure all `forward` function outputs participate in calculating loss. 
-If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
-Parameter indices which did not receive grad for rank 0: 389 390
- In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
-
-💾 Attempting to save current model state...💾 Attempting to save current model state...
-
-✅ Error checkpoint saved to ../model/e5-large-v2-20250812212818-finetuned-icd-v50-production//error_checkpoint/
-
-
-❌ Training failed with error: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
-making sure all `forward` function outputs participate in calculating loss. 
-If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
-Parameter indices which did not receive grad for rank 1: 389 390
- In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
-Traceback (most recent call last):
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 831, in <module>
-    main(config, date_time)
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 704, in main
-    trainer.train()
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2206, in train
-    return inner_training_loop(
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2548, in _inner_training_loop
-    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 3749, in training_step
-    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/trainer.py", line 406, in compute_loss
-    loss = loss_fn(features, labels)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/losses/MultipleNegativesRankingLoss.py", line 102, in forward
-    embeddings = [self.model(sentence_feature)["sentence_embedding"] for sentence_feature in sentence_features]
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/losses/MultipleNegativesRankingLoss.py", line 102, in <listcomp>
-    embeddings = [self.model(sentence_feature)["sentence_embedding"] for sentence_feature in sentence_features]
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1633, in forward
-    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1522, in _pre_forward
-    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
-RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
-making sure all `forward` function outputs participate in calculating loss. 
-If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
-Parameter indices which did not receive grad for rank 1: 389 390
- In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
-
-✅ Cleanup completed
-✅ Error checkpoint saved to ../model/e5-large-v2-20250812212818-finetuned-icd-v50-production//error_checkpoint/
-
-
-❌ Training failed with error: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
-making sure all `forward` function outputs participate in calculating loss. 
-If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
-Parameter indices which did not receive grad for rank 0: 389 390
- In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
-Traceback (most recent call last):
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 831, in <module>
-    main(config, date_time)
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script.py", line 704, in main
-    trainer.train()
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2206, in train
-    return inner_training_loop(
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2548, in _inner_training_loop
-    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
-  File "/home/azureuser/.local/lib/python3.10/site-packages/transformers/trainer.py", line 3749, in training_step
-    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/trainer.py", line 406, in compute_loss
-    loss = loss_fn(features, labels)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/losses/MultipleNegativesRankingLoss.py", line 102, in forward
-    embeddings = [self.model(sentence_feature)["sentence_embedding"] for sentence_feature in sentence_features]
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/sentence_transformers/losses/MultipleNegativesRankingLoss.py", line 102, in <listcomp>
-    embeddings = [self.model(sentence_feature)["sentence_embedding"] for sentence_feature in sentence_features]
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1633, in forward
-    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1522, in _pre_forward
-    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
-RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
-making sure all `forward` function outputs participate in calculating loss. 
-If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
-Parameter indices which did not receive grad for rank 0: 389 390
- In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
-
-✅ Cleanup completed
+4%|████▉                                                                                                             | 1610/37002 [3:11:12<114:35:04, 11.66s/it]Step 1610/37002
+Step 1610/37002
+  4%|████▉                                                                                                             | 1620/37002 [3:13:09<115:01:33, 11.70s/it]Step 1620/37002
+Step 1620/37002
+  4%|█████                                                                                                             | 1630/37002 [3:15:06<115:48:56, 11.79s/it]Step 1630/37002
+Step 1630/37002
+  4%|█████                                                                                                             | 1640/37002 [3:17:05<116:43:42, 11.88s/it]Step 1640/37002
+Step 1640/37002
+  4%|█████                                                                                                             | 1650/37002 [3:19:04<117:03:44, 11.92s/it]Step 1650/37002
+Step 1650/37002
+{'loss': 1.8273, 'grad_norm': 6.000232219696045, 'learning_rate': 8.913513513513515e-06, 'epoch': 0.13}                                                           
+  4%|█████                                                                                                             | 1660/37002 [3:21:04<116:20:05, 11.85s/it]Step 1660/37002
+Step 1660/37002
+  5%|█████▏                                                                                                            | 1670/37002 [3:23:03<117:45:24, 12.00s/it]Step 1670/37002
+Step 1670/37002
+  5%|█████▏                                                                                                            | 1680/37002 [3:25:04<118:18:04, 12.06s/it]Step 1680/37002
+Step 1680/37002
+  5%|█████▏                                                                                                            | 1690/37002 [3:27:05<119:07:52, 12.15s/it]Step 1690/37002
+Step 1690/37002
+  5%|█████▏                                                                                                            | 1700/37002 [3:29:07<119:12:24, 12.16s/it]Step 1700/37002
+Step 1700/37002
+{'loss': 1.8185, 'grad_norm': 4.107160568237305, 'learning_rate': 9.183783783783784e-06, 'epoch': 0.14}                                                           
+  5%|█████▎                                                                                                            | 1710/37002 [3:31:09<120:05:08, 12.25s/it]Step 1710/37002
+Step 1710/37002
+  5%|█████▎                                                                                                            | 1720/37002 [3:33:12<120:28:03, 12.29s/it]Step 1720/37002
+Step 1720/37002
+  5%|█████▎                                                                                                            | 1730/37002 [3:35:15<120:36:43, 12.31s/it]Step 1730/37002
+Step 1730/37002
+  5%|█████▎                                                                                                            | 1740/37002 [3:37:19<120:52:09, 12.34s/it]Step 1740/37002
+Step 1740/37002
+  5%|█████▍                                                                                                            | 1750/37002 [3:39:23<121:56:18, 12.45s/it]Step 1750/37002
+Step 1750/37002
+{'loss': 1.803, 'grad_norm': 5.630129814147949, 'learning_rate': 9.454054054054055e-06, 'epoch': 0.14}                                                            
+  5%|█████▍                                                                                                            | 1760/37002 [3:41:28<122:00:59, 12.46s/it]Step 1760/37002
+Step 1760/37002
+  5%|█████▍                                                                                                            | 1770/37002 [3:43:33<122:25:11, 12.51s/it]Step 1770/37002
+Step 1770/37002
+  5%|█████▍                                                                                                            | 1780/37002 [3:45:39<123:20:20, 12.61s/it]Step 1780/37002
+Step 1780/37002
+  5%|█████▌                                                                                                            | 1790/37002 [3:47:46<124:11:51, 12.70s/it]Step 1790/37002
+Step 1790/37002
+  5%|█████▌                                                                                                            | 1800/37002 [3:49:53<124:25:36, 12.72s/it]Step 1800/37002
+Step 1800/37002
+{'loss': 1.7948, 'grad_norm': 3.9736697673797607, 'learning_rate': 9.724324324324325e-06, 'epoch': 0.15}                                                          
+  5%|█████▌                                                                                                            | 1810/37002 [3:52:03<125:25:46, 12.83s/it]Step 1810/37002
+Step 1810/37002
+  5%|█████▌                                                                                                            | 1820/37002 [3:54:11<125:44:46, 12.87s/it]Step 1820/37002
+Step 1820/37002
+  5%|█████▋                                                                                                            | 1830/37002 [3:56:20<126:04:06, 12.90s/it]Step 1830/37002
+Step 1830/37002
+  5%|█████▋                                                                                                            | 1840/37002 [3:58:30<127:09:40, 13.02s/it]Step 1840/37002
+Step 1840/37002
+  5%|█████▋                                                                                                            | 1850/37002 [4:00:41<127:24:14, 13.05s/it]Step 1850/37002
+Step 1850/37002
+{'loss': 1.7908, 'grad_norm': 7.781122207641602, 'learning_rate': 9.994594594594596e-06, 'epoch': 0.15}                                                           
+  5%|█████▋                                                                                                            | 1860/37002 [4:02:53<128:22:19, 13.15s/it]Step 1860/37002
+Step 1860/37002
+  5%|█████▊                                                                                                            | 1870/37002 [4:05:05<129:15:31, 13.25s/it]Step 1870/37002
+Step 1870/37002
+  5%|█████▊                                                                                                            | 1880/37002 [4:07:18<129:22:13, 13.26s/it]Step 1880/37002
+Step 1880/37002
+  5%|█████▊                                                                                                            | 1890/37002 [4:09:31<130:19:16, 13.36s/it]Step 1890/37002
+Step 1890/37002
+  5%|█████▊                                                                                                            | 1900/37002 [4:11:44<130:20:00, 13.37s/it]Step 1900/37002
+Step 1900/37002
+{'loss': 1.7801, 'grad_norm': 5.381471157073975, 'learning_rate': 1.0264864864864865e-05, 'epoch': 0.15}                                                          
+  5%|█████▉                                                                                                            | 1910/37002 [4:13:59<130:44:44, 13.41s/it]Step 1910/37002
+Step 1910/37002
+  5%|█████▉                                                                                                            | 1920/37002 [4:16:13<131:16:39, 13.47s/it]Step 1920/37002
+Step 1920/37002
+  5%|█████▉                                                                                                            | 1930/37002 [4:18:28<131:29:46, 13.50s/it]Step 1930/37002
+Step 1930/37002
+  5%|█████▉                                                                                                            | 1940/37002 [4:20:43<132:14:24, 13.58s/it]Step 1940/37002
+Step 1940/37002
+  5%|██████                                                                                                            | 1950/37002 [4:22:58<132:18:24, 13.59s/it]Step 1950/37002
+Step 1950/37002
+{'loss': 1.7707, 'grad_norm': 4.677502155303955, 'learning_rate': 1.0535135135135134e-05, 'epoch': 0.16}                                                          
+  5%|██████                                                                                                            | 1959/37002 [4:25:02<132:27:59, 13.61s/it]Step 1960/37002
+  5%|██████                                                                                                            | 1960/37002 [4:25:16<132:36:47, 13.62s/it]Step 1960/37002
+  5%|██████                                                                                                            | 1970/37002 [4:27:32<133:00:32, 13.67s/it]Step 1970/37002
+Step 1970/37002
+  5%|██████                                                                                                            | 1979/37002 [4:29:35<133:20:57, 13.71s/it]Step 1980/37002
+  5%|██████                                                                                                            | 1980/37002 [4:29:49<133:14:37, 13.70s/it]Step 1980/37002
+  5%|██████▏                                                                                                           | 1990/37002 [4:32:06<133:50:27, 13.76s/it]Step 1990/37002
+Step 1990/37002
+  5%|██████▏                                                                                                           | 2000/37002 [4:34:24<134:00:32, 13.78s/it]Step 2000/37002
+Step 2000/37002
+{'loss': 1.7664, 'grad_norm': 4.523467063903809, 'learning_rate': 1.0805405405405407e-05, 'epoch': 0.16}                                                          
+{'eval_loss': 0.5914895534515381, 'eval_all_e5-large-v2_dev_cosine_accuracy': 0.947098970413208, 'eval_runtime': 28.1954, 'eval_samples_per_second': 207.835, 'eval_steps_per_second': 3.263, 'epoch': 0.16}                                                                                                                        
+  5%|██████▏                                                                                                           | 2010/37002 [4:37:50<143:37:27, 14.78s/it]Step 2010/37002                                                                                                                                                   
+Step 2010/37002
+  5%|██████▏                                                                                                           | 2020/37002 [4:40:11<136:57:08, 14.09s/it]Step 2020/37002
+Step 2020/37002
+  5%|██████▎                                                                                                           | 2029/37002 [4:42:17<136:42:54, 14.07s/it]Step 2030/37002
+  5%|██████▎                                                                                                           | 2030/37002 [4:42:31<136:01:13, 14.00s/it]Step 2030/37002
+  6%|██████▎                                                                                                           | 2040/37002 [4:44:53<137:36:10, 14.17s/it]Step 2040/37002
+Step 2040/37002
+  6%|██████▎                                                                                                           | 2050/37002 [4:47:15<138:13:31, 14.24s/it]Step 2050/37002
+Step 2050/37002
+{'loss': 1.7508, 'grad_norm': 12.670255661010742, 'learning_rate': 1.1075675675675676e-05, 'epoch': 0.17}                                                         
+  6%|██████▎                                                                                                           | 2060/37002 [4:49:38<138:47:16, 14.30s/it]Step 2060/37002
+Step 2060/37002
+  6%|██████▍                                                                                                           | 2070/37002 [4:52:01<139:11:47, 14.35s/it]Step 2070/37002
+Step 2070/37002
+  6%|██████▍                                                                                                           | 2080/37002 [4:54:26<139:40:00, 14.40s/it]Step 2080/37002
+Step 2080/37002
+  6%|██████▍                                                                                                           | 2090/37002 [4:56:50<140:01:51, 14.44s/it]Step 2090/37002
+Step 2090/37002
+  6%|██████▍                                                                                                           | 2100/37002 [4:59:14<139:41:44, 14.41s/it]Step 2100/37002
+Step 2100/37002
+{'loss': 1.7513, 'grad_norm': 5.6522216796875, 'learning_rate': 1.1345945945945947e-05, 'epoch': 0.17}                                                            
+  6%|██████▌                                                                                                           | 2110/37002 [5:01:40<140:28:18, 14.49s/it]Step 2110/37002
+Step 2110/37002
+  6%|██████▌                                                                                                           | 2120/37002 [5:04:06<141:26:22, 14.60s/it]Step 2120/37002
+Step 2120/37002
+  6%|██████▌                                                                                                           | 2130/37002 [5:06:32<141:42:51, 14.63s/it]Step 2130/37002
+Step 2130/37002
+  6%|██████▌                                                                                                           | 2140/37002 [5:08:58<141:46:57, 14.64s/it]Step 2140/37002
+Step 2140/37002
+  6%|██████▌                                                                                                           | 2150/37002 [5:11:25<142:13:25, 14.69s/it]Step 2150/37002
+Step 2150/37002
+{'loss': 1.738, 'grad_norm': 5.419011116027832, 'learning_rate': 1.1616216216216216e-05, 'epoch': 0.17}                                                           
+  6%|██████▋                                                                                                           | 2160/37002 [5:13:54<142:16:32, 14.70s/it]Step 2160/37002
+Step 2160/37002
+  6%|██████▋                                                                                                           | 2170/37002 [5:16:22<144:07:48, 14.90s/it]Step 2170/37002
+Step 2170/37002
+  6%|██████▋                                                                                                           | 2180/37002 [5:18:51<144:14:33, 14.91s/it]Step 2180/37002
+Step 2180/37002
+  6%|██████▋                                                                                                           | 2190/37002 [5:21:20<143:29:33, 14.84s/it]Step 2190/37002
+Step 2190/37002
+  6%|██████▊                                                                                                           | 2200/37002 [5:23:50<144:30:48, 14.95s/it]Step 2200/37002
+Step 2200/37002
+{'loss': 1.7291, 'grad_norm': 4.146528244018555, 'learning_rate': 1.1886486486486487e-05, 'epoch': 0.18}                                                          
+  6%|██████▊                                                                                                           | 2209/37002 [5:26:05<144:22:24, 14.94s/it]Step 2210/37002
+  6%|██████▊                                                                                                           | 2210/37002 [5:26:20<144:28:40, 14.95s/it]Step 2210/37002
+  6%|██████▊                                                                                                           | 2219/37002 [5:28:35<145:44:49, 15.08s/it]Step 2220/37002
+  6%|██████▊                                                                                                           | 2220/37002 [5:28:50<145:34:59, 15.07s/it]Step 2220/37002
+  6%|██████▊                                                                                                           | 2230/37002 [5:31:22<146:11:45, 15.14s/it]Step 2230/37002
+Step 2230/37002
+  6%|██████▉                                                                                                           | 2239/37002 [5:33:37<145:52:33, 15.11s/it]Step 2240/37002
+  6%|██████▉                                                                                                           | 2240/37002 [5:33:53<145:59:51, 15.12s/it]Step 2240/37002
+  6%|██████▉                                                                                                           | 2250/37002 [5:36:25<146:35:32, 15.19s/it]Step 2250/37002
+Step 2250/37002
+{'loss': 1.7225, 'grad_norm': 8.565695762634277, 'learning_rate': 1.2156756756756758e-05, 'epoch': 0.18}                                                          
+  6%|██████▉                                                                                                           | 2260/37002 [5:38:58<146:55:50, 15.23s/it]Step 2260/37002
+Step 2260/37002
+  6%|██████▉                                                                                                           | 2270/37002 [5:41:30<147:31:51, 15.29s/it]Step 2270/37002
+Step 2270/37002
+  6%|███████                                                                                                           | 2280/37002 [5:44:04<148:07:02, 15.36s/it]Step 2280/37002
+Step 2280/37002
+  6%|███████                                                                                                           | 2290/37002 [5:46:38<149:07:28, 15.47s/it]Step 2290/37002
+Step 2290/37002
+  6%|███████                                                                                                           | 2300/37002 [5:49:13<149:08:39, 15.47s/it]Step 2300/37002
+Step 2300/37002
+{'loss': 1.7125, 'grad_norm': 6.934849262237549, 'learning_rate': 1.2427027027027028e-05, 'epoch': 0.19}                                                          
+  6%|███████                                                                                                           | 2310/37002 [5:51:48<149:08:33, 15.48s/it]Step 2310/37002
+Step 2310/37002
+  6%|███████▏                                                                                                          | 2320/37002 [5:54:23<149:42:07, 15.54s/it]Step 2320/37002
+Step 2320/37002
+  6%|███████▏                                                                                                          | 2330/37002 [5:57:00<150:37:17, 15.64s/it]Step 2330/37002
+Step 2330/37002
+  6%|███████▏                                                                                                          | 2340/37002 [5:59:36<150:25:04, 15.62s/it]Step 2340/37002
+Step 2340/37002
+  6%|███████▏                                                                                                          | 2350/37002 [6:02:13<151:30:29, 15.74s/it]Step 2350/37002
+Step 2350/37002
+{'loss': 1.7082, 'grad_norm': 6.220770835876465, 'learning_rate': 1.2697297297297297e-05, 'epoch': 0.19}                                                          
+  6%|███████▎                                                                                                          | 2359/37002 [6:04:36<151:45:51, 15.77s/it]Step 2360/37002
+  6%|███████▎                                                                                                          | 2360/37002 [6:04:52<151:47:30, 15.77s/it]Step 2360/37002
+  6%|███████▎                                                                                                          | 2370/37002 [6:07:30<152:07:34, 15.81s/it]Step 2370/37002
+Step 2370/37002
+  6%|███████▎                                                                                                          | 2380/37002 [6:10:09<152:54:06, 15.90s/it]Step 2380/37002
+Step 2380/37002
+  6%|███████▎                                                                                                          | 2390/37002 [6:12:48<153:38:53, 15.98s/it]Step 2390/37002
+Step 2390/37002
+  6%|███████▍                                                                                                          | 2399/37002 [6:15:12<154:01:30, 16.02s/it]Step 2400/37002
+  6%|███████▍                                                                                                          | 2400/37002 [6:15:28<153:58:55, 16.02s/it]Step 2400/37002
+{'loss': 1.7014, 'grad_norm': 5.042766571044922, 'learning_rate': 1.296756756756757e-05, 'epoch': 0.19}                                                           
+  7%|███████▍                                                                                                          | 2410/37002 [6:18:09<154:30:38, 16.08s/it]Step 2410/37002
+Step 2410/37002
+  7%|███████▍                                                                                                          | 2419/37002 [6:20:35<154:37:05, 16.10s/it]Step 2420/37002
+  7%|███████▍                                                                                                          | 2420/37002 [6:20:51<154:42:09, 16.10s/it]Step 2420/37002
+  7%|███████▍                                                                                                          | 2430/37002 [6:23:33<155:56:53, 16.24s/it]Step 2430/37002
+Step 2430/37002
+  7%|███████▌                                                                                                          | 2440/37002 [6:26:16<156:24:14, 16.29s/it]Step 2440/37002
+Step 2440/37002
+  7%|███████▌                                                                                                          | 2450/37002 [6:28:59<157:05:02, 16.37s/it]Step 2450/37002
+Step 2450/37002
+{'loss': 1.6905, 'grad_norm': 7.2099175453186035, 'learning_rate': 1.3237837837837839e-05, 'epoch': 0.2}                                                          
+  7%|███████▌                                                                                                          | 2460/37002 [6:31:44<157:14:03, 16.39s/it]Step 2460/37002
+Step 2460/37002
+  7%|███████▌                                                                                                          | 2470/37002 [6:34:29<157:50:49, 16.46s/it]Step 2470/37002
+Step 2470/37002
+  7%|███████▋                                                                                                          | 2479/37002 [6:36:57<158:10:50, 16.49s/it]Step 2480/37002
+  7%|███████▋                                                                                                          | 2480/37002 [6:37:13<158:07:35, 16.49s/it]Step 2480/37002
+  7%|███████▋                                                                                                          | 2490/37002 [6:39:59<158:48:44, 16.57s/it]Step 2490/37002
+Step 2490/37002
+  7%|███████▋                                                                                                          | 2500/37002 [6:42:45<159:01:35, 16.59s/it]Step 2500/37002
+Step 2500/37002
+{'loss': 1.6857, 'grad_norm': 3.9112377166748047, 'learning_rate': 1.3508108108108108e-05, 'epoch': 0.2}                                                          
+  7%|███████▋                                                                                                          | 2509/37002 [6:45:16<159:31:03, 16.65s/it]Step 2510/37002
+  7%|███████▋                                                                                                          | 2510/37002 [6:45:32<159:35:50, 16.66s/it]Step 2510/37002
+  7%|███████▊                                                                                                          | 2519/37002 [6:48:02<159:29:19, 16.65s/it]Step 2520/37002
+  7%|███████▊                                                                                                          | 2520/37002 [6:48:19<159:33:35, 16.66s/it]Step 2520/37002
+  7%|███████▊                                                                                                          | 2529/37002 [6:50:49<160:10:14, 16.73s/it]Step 2530/37002
+  7%|███████▊                                                                                                          | 2530/37002 [6:51:06<160:17:32, 16.74s/it]Step 2530/37002
+  7%|███████▊                                                                                                          | 2539/37002 [6:53:37<161:06:51, 16.83s/it]Step 2540/37002
+  7%|███████▊                                                                                                          | 2540/37002 [6:53:54<160:40:56, 16.79s/it]Step 2540/37002
+  7%|███████▊                                                                                                          | 2549/37002 [6:56:25<161:01:16, 16.83s/it]Step 2550/37002
+  7%|███████▊                                                                                                          | 2550/37002 [6:56:42<160:53:45, 16.81s/it]Step 2550/37002
+{'loss': 1.6851, 'grad_norm': 4.663087844848633, 'learning_rate': 1.3778378378378379e-05, 'epoch': 0.21}                                                          
+  7%|███████▉                                                                                                          | 2559/37002 [6:59:14<162:00:28, 16.93s/it]Step 2560/37002
+  7%|███████▉                                                                                                          | 2560/37002 [6:59:31<161:49:03, 16.91s/it]Step 2560/37002
+  7%|███████▉                                                                                                          | 2565/37002 [7:00:56<162:09:57, 16.95s/it]
+  7%|███████▉                                                                                                          | 2569/37002 [7:02:04<162:18:02, 16.97s/it]
