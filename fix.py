@@ -1,21 +1,58 @@
-import math
+from transformers import AutoTokenizer, DataCollatorWithPadding
 
-def count_lines(file_path):
-    # Skip header line
-    with open(file_path, 'r') as f:
-        return sum(1 for _ in f) - 1
+class TripletCollator:
+    """
+    Custom collator for anchor, positive, negative sequences.  It defines
+    a __call__ method for batching and exposes valid_label_columns (empty).
+    """
+    def __init__(self, model_name, pad_to_multiple=8):
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        # DataCollatorWithPadding handles dynamic padding and device tensors
+        self.base_collator = DataCollatorWithPadding(
+            tokenizer=tokenizer,
+            padding='longest',
+            pad_to_multiple_of=pad_to_multiple,
+            return_tensors='pt'
+        )
+        # SentenceTransformerTrainer looks at this attribute to detect
+        # which dataset columns are labels.  We have none.
+        self.valid_label_columns = []
 
-train_samples = count_lines(config.TRAIN_DATASET_PATH)
-per_device = config.TRAIN_BATCH_SIZE  # e.g. 512
-world_size = torch.distributed.get_world_size() if torch.distributed.is_initialized() else 1
-batches_per_epoch = train_samples // (per_device * world_size)
-optimizer_steps_per_epoch = batches_per_epoch // config.GRADIENT_ACCUMULATION_STEPS
-max_steps = optimizer_steps_per_epoch * config.EPOCHS
+    def __call__(self, features):
+        # Extract anchor, positive and negative lists from the batch
+        anchors   = [example['anchor']    for example in features]
+        positives = [example['positives'] for example in features]
+        negatives = [example['negatives'] for example in features]
 
-args = SentenceTransformerTrainingArguments(
-    ...,
-    max_steps=max_steps,        # required when len(train_dataset) is unknown
-    num_train_epochs=None,      # don't specify epochs when using max_steps
-    warmup_ratio=0.1,           # use a ratio instead of warmup_steps
-    ...
+        # Tokenize and pad each field separately
+        anchor_batch   = self.base_collator.tokenizer(
+            anchors, padding=True, truncation=True, return_tensors='pt'
+        )
+        positive_batch = self.base_collator.tokenizer(
+            positives, padding=True, truncation=True, return_tensors='pt'
+        )
+        negative_batch = self.base_collator.tokenizer(
+            negatives, padding=True, truncation=True, return_tensors='pt'
+        )
+
+        return {
+            'anchor':    anchor_batch,
+            'positives': positive_batch,
+            'negatives': negative_batch
+        }
+
+
+
+data_collator = TripletCollator(config.MODEL_NAME, pad_to_multiple=8)
+
+trainer = SentenceTransformerTrainer(
+    model=model,
+    args=args,
+    train_dataset=train_dataset,
+    eval_dataset=eval_dataset,
+    loss=loss,
+    evaluator=dev_evaluator,
+    data_collator=data_collator,
+    callbacks=[...],
+    optimizers=(optimizer, scheduler),
 )
