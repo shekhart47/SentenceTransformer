@@ -1,25 +1,25 @@
 (azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ torchrun --nproc_per_node=2 optimized_training_script_v4.py
-W0813 17:11:19.647000 16940 site-packages/torch/distributed/run.py:766] 
-W0813 17:11:19.647000 16940 site-packages/torch/distributed/run.py:766] *****************************************
-W0813 17:11:19.647000 16940 site-packages/torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
-W0813 17:11:19.647000 16940 site-packages/torch/distributed/run.py:766] *****************************************
-[W813 17:11:19.013484144 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W813 17:11:19.017024470 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+W0813 17:24:01.187000 19542 site-packages/torch/distributed/run.py:766] 
+W0813 17:24:01.187000 19542 site-packages/torch/distributed/run.py:766] *****************************************
+W0813 17:24:01.187000 19542 site-packages/torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0813 17:24:01.187000 19542 site-packages/torch/distributed/run.py:766] *****************************************
+[W813 17:24:01.553942988 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 17:24:01.557735564 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
 Load Parameters
 Load Parameters
 Loading Datasets
 Loading Datasets
-Loading dataset shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 18/18 [00:00<00:00, 29.81it/s]
-Loading dataset shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 18/18 [00:00<00:00, 27.04it/s]
-Setting Up Dataloader Num Workers & PIN Meory Flag
+Loading dataset shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 18/18 [00:00<00:00, 31.08it/s]
+Loading dataset shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 18/18 [00:00<00:00, 28.40it/s]
 Setting Up Dataloader Num Workers & PIN Meory Flag
 Recommended dataloader_num_workers : 6
-AVAILABLE_MEMORY_GB : 620.7482414245605 | DATASET_MEMORY_SIZE_GB : 8.103603198051452 pin_memory : True
+AVAILABLE_MEMORY_GB : 619.7795944213867 | DATASET_MEMORY_SIZE_GB : 8.103603198051452 pin_memory : True
 Datasets Loaded
 ..............
 Loading Model e5-large-v2
+Setting Up Dataloader Num Workers & PIN Meory Flag
 Recommended dataloader_num_workers : 6
-AVAILABLE_MEMORY_GB : 620.7441787719727 | DATASET_MEMORY_SIZE_GB : 8.103603198051452 pin_memory : True
+AVAILABLE_MEMORY_GB : 619.7837257385254 | DATASET_MEMORY_SIZE_GB : 8.103603198051452 pin_memory : True
 Datasets Loaded
 ..............
 Loading Model e5-large-v2
@@ -39,51 +39,50 @@ Loss Initialized
 Initializing Optimizer
 Learning Rate Scheduler Selected : cosine
 Load Sentence Transformer Training Arguments
-Traceback (most recent call last):
-Traceback (most recent call last):
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 449, in <module>
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 449, in <module>
-        main(config, date_time)main(config, date_time)
+[W813 17:25:01.927819593 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 17:25:01.930072653 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 17:25:01.931627960 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W813 17:25:01.935028202 socket.cpp:200] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/azureml/core/__init__.py:11: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Training Started                                                                                                                                                                                   
+Training Started                                                                                                                                                                                   
+{'loss': 4.9188, 'grad_norm': 16.529544830322266, 'learning_rate': 0.0, 'epoch': 0.0}                                                                                                              
+  0%|                                                                                                                                                        | 9/124800 [00:16<27:54:54,  1.24it/s]Step 10/124800
+  0%|                                                                                                                                                       | 10/124800 [00:17<25:43:33,  1.35it/s]Step 10/124800
+  0%|                                                                                                                                                       | 19/124800 [00:22<20:36:03,  1.68it/s]Step 20/124800
+  0%|                                                                                                                                                       | 20/124800 [00:23<20:26:36,  1.70it/s]Step 20/124800
+  0%|                                                                                                                                                       | 29/124800 [00:28<21:58:15,  1.58it/s]Step 30/124800
+  0%|                                                                                                                                                       | 30/124800 [00:29<21:30:49,  1.61it/s]Step 30/124800
+  0%|                                                                                                                                                       | 39/124800 [00:34<21:50:55,  1.59it/s]Step 40/124800
+  0%|                                                                                                                                                       | 40/124800 [00:35<21:28:04,  1.61it/s]Step 40/124800
+  0%|                                                                                                                                                       | 49/124800 [00:41<21:49:01,  1.59it/s]Step 50/124800
+  0%|                                                                                                                                                       | 50/124800 [00:41<21:41:17,  1.60it/s]Step 50/124800
+{'loss': 4.942, 'grad_norm': 15.76923656463623, 'learning_rate': 9.815705128205129e-08, 'epoch': 0.0}                                                                                              
+  0%|                                                                                                                                                       | 60/124800 [00:48<22:08:27,  1.56it/s]Step 60/124800
+Step 60/124800
+  0%|                                                                                                                                                       | 70/124800 [00:55<23:22:22,  1.48it/s]Step 70/124800
+Step 70/124800
+  0%|                                                                                                                                                       | 80/124800 [01:01<22:21:52,  1.55it/s]Step 80/124800
+Step 80/124800
+  0%|                                                                                                                                                       | 90/124800 [01:08<23:10:44,  1.49it/s]Step 90/124800
+Step 90/124800
+  0%|                                                                                                                                                      | 100/124800 [01:15<23:18:38,  1.49it/s]Step 100/124800
+Step 100/124800
+{'loss': 4.8337, 'grad_norm': 16.09722328186035, 'learning_rate': 1.983173076923077e-07, 'epoch': 0.0}                                                                                             
+  0%|▏                                                                                                                                                     | 110/124800 [01:22<23:36:44,  1.47it/s]Step 110/124800
+Step 110/124800
+  0%|▏                                                                                                                                                     | 120/124800 [01:29<24:38:27,  1.41it/s]Step 120/124800
+Step 120/124800
+  0%|▏                                                                                                                                                     | 130/124800 [01:36<24:18:51,  1.42it/s]Step 130/124800
+Step 130/124800
+  0%|▏                                                                                                                                                     | 135/124800 [01:40<24:19:58,  1.42it/s]^CW0813 17:26:46.696000 19542 site-packages/torch/distributed/elastic/agent/server/api.py:719] Received Signals.SIGINT death signal, shutting down workers
+W0813 17:26:46.696000 19542 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 19608 closing signal SIGINT
+Training Interrupted. Current Step : 135Training Interrupted. Current Step : 0Training Interrupted. Current Step : 0
+Training Interrupted. Current Step : 0
 
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 384, in main
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 384, in main
-    args = get_SentenceTransformerTrainingArguments(config)    
-args = get_SentenceTransformerTrainingArguments(config)  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 260, in get_SentenceTransformerTrainingArguments
 
-  File "/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model/optimized_training_script_v4.py", line 260, in get_SentenceTransformerTrainingArguments
-        args = SentenceTransformerTrainingArguments(args = SentenceTransformerTrainingArguments(
-
-TypeErrorTypeError: : SentenceTransformerTrainingArguments.__init__() got an unexpected keyword argument 'pad_to_multiple_of'SentenceTransformerTrainingArguments.__init__() got an unexpected keyword argument 'pad_to_multiple_of'
-
-W0813 17:12:29.166000 16940 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 17006 closing signal SIGTERM
-E0813 17:12:29.280000 16940 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 0 (pid: 17005) of binary: /anaconda/envs/azureml_py310_sdkv2/bin/python
-Traceback (most recent call last):
-  File "/anaconda/envs/azureml_py310_sdkv2/bin/torchrun", line 8, in <module>
-    sys.exit(main())
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
-    return f(*args, **kwargs)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in main
-    run(args)
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/distributed/run.py", line 883, in run
-    elastic_launch(
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 139, in __call__
-    return launch_agent(self._config, self._entrypoint, list(args))
-  File "/anaconda/envs/azureml_py310_sdkv2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 270, in launch_agent
-    raise ChildFailedError(
-torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
-============================================================
-optimized_training_script_v4.py FAILED
-------------------------------------------------------------
-Failures:
-  <NO_OTHER_FAILURES>
-------------------------------------------------------------
-Root Cause (first observed failure):
-[0]:
-  time      : 2025-08-13_17:12:29
-  host      : localhost
-  rank      : 0 (local_rank: 0)
-  exitcode  : 1 (pid: 17005)
-  error_file: <N/A>
-  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
-============================================================
-(azureml_py310_sdkv2) azureuser@shekharh1002025:/mnt/batch/tasks/shared/LS_root/mounts/clusters/shekharh1002025/code/Users/shekhar_icd/src/model$ 
+W0813 17:26:46.697000 19542 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 19609 closing signal SIGINT
+Training Interrupted. Current Step : 0Training Interrupted. Current Step : 0Training Interrupted. Current Step : 0
